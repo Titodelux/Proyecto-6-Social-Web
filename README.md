@@ -1,6 +1,6 @@
 # Red Social API
 
-### Url base: http://localhost:9000/api/v1
+### Url base: http://localhost:9016/api/v1
 
 - /auth
 
@@ -27,21 +27,5 @@ example ecommerce: /product/:id/add-to-cart
 
 - /followers
   - /:id
-
-### Controllers Posts
-
-- [x] findAllPosts
-- [x] findPostById
-- [x] createPost
-- [x] updatePost
-- [x] removePost
-
-### Services Posts
-- [ ] getAllPosts
-- [ ] getPostById
-- [ ] postNewPost 
-- [ ] patchPost
-- [ ] deletePost
-
 
 

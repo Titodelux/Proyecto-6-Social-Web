@@ -20,7 +20,7 @@ const Posts = db.define('posts', {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-            len: [1, Infinity]
+            notEmpty: true
         }
     }
 

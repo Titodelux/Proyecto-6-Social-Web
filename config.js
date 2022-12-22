@@ -2,10 +2,10 @@ require('dotenv').config()
 
 module.exports = {
     api: {
-        //! port: process.env.PORT ? process.env.PORT : 3000,
-        port: process.env.PORT || 3000,
-        host: process.env.HOST || 'http://localhost:3000/',
+        port: process.env.PORT || 9009,
+        host: process.env.HOST || 'http://localhost:9009/',
         jwtSecret: process.env.JWT_SECRET,
+        email: process.env.MAIL,
         emailPass: process.env.MAIL_PASS
     },
     db: {

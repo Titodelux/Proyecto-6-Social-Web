@@ -1,9 +1,18 @@
 const uuid = require('uuid')
 
 const Posts = require('../models/posts.models')
+const Users = require('../models/users.models')
 
 const findAllPosts = async () => {
-    const data = await Posts.findAll()
+    const data = await Posts.findAll({
+        include: {
+            model: Users,
+            attributes: ['id', 'firstName']
+        },
+        attributes: {
+            exclude: ['userId', "createdAt", "updatedAt"]
+        }
+    })
     return data
 }
 
@@ -11,6 +20,13 @@ const findPostById = async (id) => {
     const data = await Posts.findOne({
         where: {
             id: id
+        },
+        include: {
+            model: Users,
+            attributes: ['id', 'firstName']
+        },
+        attributes: {
+            exclude: ['userId', 'createdAt', 'updatedAt']
         }
     })
     return data
@@ -35,10 +51,11 @@ const updatePost = async(id, userId, obj) => {
     return data[0]
 }
 
-const removePost = async (id) => {
+const removePost = async (postId, userId) => {
     const data = await Posts.destroy({
         where: {
-            id: id
+            id: postId,
+            userId: userId
         }
     })
     return data

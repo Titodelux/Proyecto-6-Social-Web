@@ -11,18 +11,14 @@ const authRouter = require('./auth/auth.router')
 const postRouter = require('./posts/posts.router')
 
 //? Initial Configs
-
 const app = express()
-//? Enable incoming JSON data
 app.use(express.json())
-//? Enable CORS 
 app.use(cors())
 
-//? Authenticate DB
+//? Authenticate and Sync DB
 db.authenticate()
     .then(() => console.log('Database Authenticated'))
     .catch((err) => console.log(err))
-//? Sync DataBase Models
 db.sync()
     .then(() => console.log('Database Synced'))
     .catch(err => console.log(err))

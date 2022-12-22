@@ -1,4 +1,4 @@
-const uuid = require('uuid')
+const uuid = require('uuid').v4
 
 const Users = require('../models/users.models')
 const { hashPassword } = require('../utils/crypto')
@@ -38,14 +38,15 @@ const findUserByEmail = async (email) => {
 
 const createUser = async (obj) => {
     const data = await Users.create({
-        id: uuid.v4(),
+        id: uuid(),
         firstName: obj.firstName,
         lastName: obj.lastName,
         nickName: obj.nickName,
         email: obj.email,
         password: hashPassword(obj.password),
         gender: obj.gender,
-        birthday: obj.birthday
+        birthday: obj.birthday,
+        profileImg: obj.profileImg
     })
     return data
 }
@@ -68,6 +69,7 @@ const deleteUser = async (id) => {
         }
     })
     return data[0]
+    // ! [0]??
 }
 
 

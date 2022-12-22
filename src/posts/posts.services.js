@@ -57,8 +57,9 @@ const patchPost = (req, res) => {
 }   
 
 const deletePost = (req, res) => {
-    const id = req.params.id 
-    postControllers.removePost(id)
+    const postId = req.params.id 
+    const userId = req.user.id
+    postControllers.removePost(postId, userId)
         .then(data => {
             if(data){
                 res.status(204).json()
